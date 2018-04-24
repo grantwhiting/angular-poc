@@ -1,0 +1,21 @@
+<div class="search-results">
+  <div *ngFor="let franchise of franchises | async; trackBy: itemToIndex" class="fd_listing">
+    <a href="#">
+      <span class="fdTitle">{{franchise.name}}</span>
+      <img class="pic_fdSponsor" src="https://www.findafranchise.com/_img/_franchise/{{franchise.franchiseId}}/{{franchise.franchiseImage.displayImage}}" />
+      <p class="desc">
+        <span>{{franchise.shortDescription}}</span>
+      </p>
+      <p class="capitol">
+        <span class="capReq">Capitol Required</span>
+        <span class="fdCapRequired">{{franchise.totalInvestmentMin}}</span>
+      </p>
+    </a>
+    <button 
+      class="addToCart"
+      (click)="sentToCart ? removeFromCart() : addToCart()"
+    >
+      {{sentToCart ? "Added to List" : "Add to Request List"}}
+    </button>
+  </div>
+</div>
