@@ -1,0 +1,12 @@
+<div class="contact-cart">
+  <div class="franchise-contact-cart list-group">
+    <div class="list-grou-item list-grou-item-info title">Franchise Request List</div>
+    <div *ngIf="cart.length === 0; else cartItems">Select franchises that you want to learn more about!</div>
+    <ng-template #cartItems class="franchise-contact-cart-items">
+      <div *ngFor="let franchise of cart" class="list-grou-item">
+        {{franchise.name}}
+        <button className="remove-button" (click)="removeFromFranchiseCart(franchise)">&times;</button>
+      </div>
+    </ng-template>
+  </div>
+</div>
