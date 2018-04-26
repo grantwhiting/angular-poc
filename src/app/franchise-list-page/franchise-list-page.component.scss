@@ -1,0 +1,21 @@
+@import '../../sass/mixins/_grid';
+@import '../../sass/mixins/_defaults';
+
+// components
+@import '../franchise-cart/franchise-cart.component';
+
+// start styles
+.franchise-listing-page-content {
+    @include justify-content(space-between);
+    @include align-items(flex-start);
+    @include border-radii(0,0,0,0);
+}
+
+.franchise-list {
+    margin-right: 30px;
+}
+
+.franchise-cart {
+    // @include box-shadow(0, 5px, 12px, 0, #999999, false);
+    min-width: 300px;
+}

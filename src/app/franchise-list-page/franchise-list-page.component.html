@@ -1,26 +1,4 @@
-<div class="listing-container">
-  <div class="search-results">
-    <div 
-      *ngFor="let franchise of franchises; let i = index; trackBy: trackById" 
-      class="fd_listing">
-      <a routerLink="/franchise-opportunities/{{franchise.shortName}}">
-        <span class="fdTitle">{{franchise.name}}</span>
-        <img class="pic_fdSponsor" src="https://www.findafranchise.com/_img/_franchise/{{franchise.franchiseId}}/{{franchise.franchiseImage.displayImage}}" />
-        <p class="desc">
-          <span>{{franchise.shortDescription}}</span>
-        </p>
-        <p class="capitol">
-          <span class="capReq">Capitol Required</span>
-          <span class="fdCapRequired">{{franchise.totalInvestmentMin}}</span>
-        </p>
-      </a>
-      <button 
-        id={{franchise.franchiseId}} 
-        [ngClass]="(franchiseInCart(franchise)) ? 'addedToCart' : 'addToCart'"
-        (click)="franchiseInCart(franchise) ? removeFromFranchiseCart(franchise) : addToFranchiseCart(franchise)">
-        {{franchiseInCart(franchise) ? "Added to List" : "Add to Request List"}}
-      </button>
-    </div>
-  </div>
+<div class="franchise-listing-page-content flex-container">
+  <app-franchise-list class="franchise-list" [franchises]="franchises"></app-franchise-list>
+  <app-franchise-cart class="franchise-cart" [franchises]="franchises"></app-franchise-cart>
 </div>
-<app-franchise-cart></app-franchise-cart>

@@ -1,16 +1,19 @@
-<div class="franchise-details">
-  <h1 class="fdTitle">Test Name</h1>
+<div *ngIf="!franchise" class="loading-data">
+  <i class="fas fa-spinner"></i>
+</div>
+<div *ngIf="franchise" class="franchise-details">
+  <h1 class="fdTitle">{{franchise.name}}</h1>
   <hr/>
-  <span class="fdLocation">Address, City, State, Zip</span>
+  <span class="fdLocation">{{franchise.address}}, {{franchise.city}}, {{franchise.stateId}}, {{franchise.zip}}</span>
   <div>
-    <img class="pic_fdSponsor" src="" />
+    <img class="pic_fdSponsor" src="https://www.findafranchise.com/_img/_franchise/{{franchise.franchiseId}}/{{franchise.franchiseImage.displayImage}}" />
   </div>
   <div class="fdBusinessDescription">Business Description
-    <p>Description 
+    <p>{{franchise.generalDescription}}
       <br/>
-      Investment Required: totalInvestmentMin - totalInvestmentMax
+      Investment Required: {{franchise.totalInvestmentMin | currency}} - {{franchise.totalInvestmentMax | currency}}
       <br/>
-      Contact info: localPhone
+      Contact info: {{franchise.localPhone}}
     </p>
   </div>
 </div>

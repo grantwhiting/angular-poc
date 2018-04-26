@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FranchiseCartComponent } from './franchise-cart/franchise-cart.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
+import { FranchiseListComponent } from './franchise-list/franchise-list.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.co
     AppComponent,
     FranchiseListPageComponent,
     FranchiseCartComponent,
-    FranchiseDetailComponent
+    FranchiseDetailComponent,
+    FranchiseListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+@import '../../sass/variables/_defaults';
+@import '../../sass/mixins/_grid';
+@import '../../sass/mixins/_defaults';
+
+.franchise-cart {
+
+    &_title {
+        color: white;
+        background-color: #007acc;
+        border: 1px solid #007acc;
+        padding: 10px 15px;
+        @include border-radii(4px, 4px, 0, 0);
+        text-align: center;
+    }
+
+    &_items {
+        border: 1px solid #ddd;
+        @include border-radii(0, 0, 4px, 4px);
+
+        &-placeholder {
+            padding: 10px 15px;
+        }
+
+        &--item {
+            padding: 10px 15px;
+            @include flexbox;
+            @include justify-content(space-between);
+            @include align-items(center);
+            border-bottom: 1px solid #ddd;
+        }
+    }
+}
+
+.remove-button {
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+}
