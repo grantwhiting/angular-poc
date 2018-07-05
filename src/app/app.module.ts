@@ -1,4 +1,5 @@
-import { FranchiseCartServiceService } from './franchise-cart-service.service';
+import { RouterModule } from '@angular/router';
+import { FranchiseCartService } from './franchise-cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,7 @@ import { FranchiseCartComponent } from './franchise-cart/franchise-cart.componen
 import { AppRoutingModule } from './/app-routing.module';
 import { FranchiseDetailComponent } from './franchise-detail/franchise-detail.component';
 import { FranchiseListComponent } from './franchise-list/franchise-list.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -19,16 +21,18 @@ import { FranchiseListComponent } from './franchise-list/franchise-list.componen
     FranchiseListPageComponent,
     FranchiseCartComponent,
     FranchiseDetailComponent,
-    FranchiseListComponent
+    FranchiseListComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule
   ],
   providers: [
     GetFranchisesService,
-    FranchiseCartServiceService
+    FranchiseCartService
   ],
   bootstrap: [AppComponent]
 })

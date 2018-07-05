@@ -1,5 +1,9 @@
-@import './variables/_defaults.scss';
+@import '~bourbon/core/_bourbon';
+@import '~bourbon-neat/app/assets/stylesheets/_neat';
+@import './variables/_defaults';
 @import './mixins/_grid';
+
+@import'./components/nav';
 
 * {
     box-sizing: border-box;

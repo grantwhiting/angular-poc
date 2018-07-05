@@ -1,5 +1,5 @@
-import { FranchiseCartServiceService } from './../franchise-cart-service.service';
-import { Component, OnInit, Input, AfterContentChecked } from '@angular/core';
+import { FranchiseCartService } from '../franchise-cart.service';
+import { Component, OnInit, Input, AfterContentChecked, HostListener } from '@angular/core';
 import { Franchise } from '../franchise';
 
 @Component({
@@ -10,9 +10,10 @@ import { Franchise } from '../franchise';
 export class FranchiseCartComponent implements OnInit, AfterContentChecked {
   cart: Franchise[] = [];
   @Input() franchises: Franchise[] = [];
+  cartIsFixed = false;
 
   constructor(
-    private _franchiseCartService: FranchiseCartServiceService
+    private _franchiseCartService: FranchiseCartService
   ) { }
 
   ngOnInit() {
@@ -37,7 +38,26 @@ export class FranchiseCartComponent implements OnInit, AfterContentChecked {
   removeFromFranchiseCart(franchise: Franchise): void {
     this.cart = this.cart.filter((item: Franchise) => item.franchiseId !== franchise.franchiseId);
     this._franchiseCartService.updateCart(this.cart);
+    this.removeFromLocalStorage(franchise);
+  }
+
+  removeFromLocalStorage(franchise: Franchise): void {
     localStorage.removeItem(`franchise_${franchise.franchiseId}`);
+  }
+
+  helloWorld(): string {
+    return 'Hello world!';
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll($event) {
+    const scrollTop = $event.target.documentElement.scrollTop;
+    const cart = document.getElementById('franchiseContactCart');
+    if (scrollTop >= 39) {
+      this.cartIsFixed = true;
+    } else {
+      this.cartIsFixed = false;
+    }
   }
 
 }

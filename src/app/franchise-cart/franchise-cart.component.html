@@ -1,12 +1,14 @@
-<h3 class="franchise-cart_title">Franchise Request List</h3>
-<div class="franchise-cart_items">
-  <p *ngIf="cart.length === 0; else cartItems" class="franchise-cart_items-placeholder">Select franchises that you want to learn more about!</p>
-  <ng-template #cartItems>
-    <div class="franchise-cart_items-item">
-      <div *ngFor="let franchise of cart" class="franchise-cart_items--item">
-        {{franchise.name}}
-        <span class="remove-button" (click)="removeFromFranchiseCart(franchise)">&times;</span>
+<div id="franchiseContactCart" [class.fixed]="cartIsFixed">
+  <h3 class="franchise-cart_title">Franchise Request List</h3>
+  <div class="franchise-cart_items">
+    <p *ngIf="cart.length === 0; else cartItems" class="franchise-cart_items-placeholder">Select franchises that you want to learn more about!</p>
+    <ng-template #cartItems>
+      <div class="franchise-cart_items-item">
+        <div *ngFor="let franchise of cart" class="franchise-cart_items--item">
+          {{franchise.name}}
+          <span class="remove-button" (click)="removeFromFranchiseCart(franchise)">&times;</span>
+        </div>
       </div>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Franchise } from '../franchise';
-import { FranchiseCartServiceService } from '../franchise-cart-service.service';
+import { FranchiseCartService} from '../franchise-cart.service';
 
 @Component({
   selector: 'app-franchise-list',
@@ -8,16 +8,27 @@ import { FranchiseCartServiceService } from '../franchise-cart-service.service';
   styleUrls: ['./franchise-list.component.scss']
 })
 export class FranchiseListComponent implements OnInit {
-  // @Input() franchiseProps: Franchise[];
   @Input() franchises: Franchise[];
   franchiseCart: Franchise[] = [];
 
   constructor(
-    private _franchiseCartService: FranchiseCartServiceService
+    private _franchiseCartService: FranchiseCartService
   ) { }
 
   ngOnInit() {
     this.getFranchiseCart();
+  }
+
+  private _updateFranchiseCartComponent(franchiseCart: Franchise[]): void {
+    this._franchiseCartService.updateCart(franchiseCart);
+  }
+
+  private _addToLocalStorage(franchise: Franchise): void {
+    localStorage.setItem(`franchise_${franchise.franchiseId.toString()}`, JSON.stringify(franchise));
+  }
+
+  private _removeFromLocalStorage(franchise: Franchise): void {
+    localStorage.removeItem(`franchise_${franchise.franchiseId.toString()}`);
   }
 
   getFranchiseCart(): void {
@@ -26,24 +37,16 @@ export class FranchiseListComponent implements OnInit {
   }
 
   addToFranchiseCart(franchise: Franchise): void {
-    this.franchiseCart.push(franchise);
-    this._franchiseCartService.updateCart(this.franchiseCart);
-    this.setLocalStorage(franchise);
+    const newFranchiseCart = this.franchiseCart;
+    newFranchiseCart.push(franchise);
+    this._updateFranchiseCartComponent(newFranchiseCart);
+    this._addToLocalStorage(franchise);
   }
 
   removeFromFranchiseCart(franchise: Franchise): void {
-    debugger;
-    this.franchiseCart = this.franchiseCart.filter((item: Franchise) => item.franchiseId !== franchise.franchiseId);
-    this._franchiseCartService.updateCart(this.franchiseCart);
-    this.removeLocalStorage(franchise);
-  }
-
-  setLocalStorage(franchise: Franchise): void {
-    localStorage.setItem(`franchise_${franchise.franchiseId.toString()}`, JSON.stringify(franchise));
-  }
-
-  removeLocalStorage(franchise: Franchise): void {
-    localStorage.removeItem(`franchise_${franchise.franchiseId.toString()}`);
+    const newFranchiseCart = this.franchiseCart.filter((item: Franchise) => item.franchiseId !== franchise.franchiseId);
+    this._updateFranchiseCartComponent(newFranchiseCart);
+    this._removeFromLocalStorage(franchise);
   }
 
   trackById(idx: number, franchise: Franchise): number {

@@ -3,6 +3,8 @@
 @import '../../sass/mixins/_defaults';
 
 .franchise-cart {
+    width: 100%;
+    max-width: 300px;
 
     &_title {
         color: white;
@@ -29,6 +31,13 @@
             border-bottom: 1px solid #ddd;
         }
     }
+}
+
+.fixed {
+    position: fixed;
+    top: 15px;
+    width: 100%;
+    max-width: 300px;
 }
 
 .remove-button {

@@ -3,7 +3,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Franchise } from './franchise';
 
 @Injectable()
-export class FranchiseCartServiceService {
+export class FranchiseCartService {
   private _cartSource = new BehaviorSubject<Franchise[]>([]);
   public currentCart = this._cartSource.asObservable();
 
