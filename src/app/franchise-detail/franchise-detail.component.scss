@@ -1,3 +1,6 @@
+@import '../../sass/mixins/mixins';
+@import '../../sass/variables/defaults';
+
 .fdTitle {
     font-family: 'CostarBrownRegular',Helvetica,Arial,sans-serif !important;
     margin-top: 0;
@@ -17,7 +20,7 @@
   }
 
   .fdBusinessDescription {
-    font-family: 'CostarBrownRegular',Helvetica,Arial,sans-serif !important;
+    font-family: $default-font;
     /* margin-top: 15px; */
     background-color: #fff;
     font-size: 17px;
@@ -30,7 +33,7 @@
     font-weight: bold;
   }
   
-  .fdBusinessDescription p{
+  .fdBusinessDescription p {
     font-size: 15px;
     font-weight: 500;
     color: #6f6f6f;
@@ -43,4 +46,56 @@
     width: 360px;
     margin-top: 6px;
     display: block;
+  }
+
+  // loading skeleton
+  .fb-skeleton {
+    @include flexbox;
+    height: 100px;
+    width: 100%;
+
+    &_logo {
+      background-color: $skeleton-bg-color;
+      @include border-radius($skeleton-logo-border-radius);
+      width: 100px;
+      height: 100px;
+    }
+
+    &_text {
+      width: 100%;
+      margin-left: 15px;
+
+      &-bar {
+        position: relative;
+        background-color: $skeleton-bg-color;
+        @include border-radius($skeleton-text-border-radius);
+        height: 15px;
+        display: block;
+        margin-bottom: 10px;
+        overflow: hidden;
+
+        &:after {
+          content: "";
+          position: absolute;;
+          @include animation('skeletonShine 1.3s infinite linear');
+          @include border-radius($skeleton-text-border-radius);
+          @include gradient-radial(#fff, $skeleton-bg-color);
+          width: 40%;
+          height: 100%;
+        }
+
+        &.long {
+          width: 100%;
+        }
+
+        &.short {
+          width: 25%;
+        }
+      }
+    }
+  }
+
+  @include keyframes(skeletonShine) {
+    0% { left: -100%; }
+    100% { left: 100%; }
   }

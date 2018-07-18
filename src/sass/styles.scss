@@ -1,7 +1,7 @@
 @import '~bourbon/core/bourbon';
 @import '~bourbon-neat/app/assets/stylesheets/neat';
+@import './mixins/mixins';
 @import './variables/defaults';
-@import './mixins/grid';
 
 @import './globals';
-@import'./components/nav';
+@import './components/components';

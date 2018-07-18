@@ -21,9 +21,11 @@ export class FranchiseDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.franchise$ = this._route.paramMap
+    setTimeout(() => {
+      this.franchise$ = this._route.paramMap
       .switchMap((params: ParamMap) => this._service.getSingleFranchise(params.get('shortname')));
     this.franchise$.subscribe(response => this.franchise = response[0]);
+    }, 1000);
   }
 
 }

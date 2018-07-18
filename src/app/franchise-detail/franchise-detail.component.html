@@ -1,5 +1,13 @@
 <div *ngIf="!franchise" class="loading-data">
-  <i class="fas fa-spinner"></i>
+  <div class="fb-skeleton">
+    <span class="fb-skeleton_logo"></span>
+    <div class="fb-skeleton_text">
+      <span class="fb-skeleton_text-bar long"></span>
+      <span class="fb-skeleton_text-bar long"></span>
+      <span class="fb-skeleton_text-bar long"></span>
+      <span class="fb-skeleton_text-bar short"></span>
+    </div>
+  </div>
 </div>
 <div *ngIf="franchise" class="franchise-details">
   <h1 class="fdTitle">{{franchise.name}}</h1>
